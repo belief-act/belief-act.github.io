@@ -47,7 +47,7 @@
   <div class="stats">
     <div class="stat reveal"><div class="num">75.0%</div><div class="what">of DUET-Bench episodes completed within 60 rounds, against at most 67.5% for the baselines (200-round horizon in the main runs).</div></div>
     <div class="stat reveal"><div class="num">61.4 <small>rounds</small></div><div class="what">per episode at matched final success (86.7%), 6% fewer than the closest baseline (HUME, 65.3), with the lowest interaction cost.</div></div>
-    <div class="stat reveal"><div class="num">20.0 <small>vs. 25.6–31.9</small></div><div class="what">rounds from the first observed change to completion, in the 56 trigger-rule, visitor-intent and unstable-storage episodes that BeliefAct, Naive, BSG and PCE all solve. Before that change, these methods need 11–13 rounds.</div></div>
+    <div class="stat reveal"><div class="num">19.8 <small>vs. 24.7–32.2</small></div><div class="what">rounds from the first observed change to completion, against Naive, BSG and PCE (HUME: 21.7), in the 54 trigger-rule, visitor-intent and unstable-storage episodes that all five methods solve. Before that change, all methods need 11–13 rounds.</div></div>
   </div>
   <div class="card figure-card reveal" style="margin-top:56px"><img src="assets/img/fig1.png" alt="A DUET-Bench household and BeliefAct's beliefs"></div>
 </div></section>
@@ -125,7 +125,7 @@
     <div class="chart" id="ch-budget"></div>
   </div>
   <div class="card chart-card reveal" style="margin-top:22px">
-    <div class="chart-head"><div><h3 class="chart-title">Rounds before and after the first observed change</h3><p class="chart-sub">Trigger rule, visitor intent and unstable storage: the 56 episodes that Naive, BSG, PCE and BeliefAct all solve. Before the change no difference is significant; after it, the paired 95% CIs of BeliefAct's savings exclude zero against all three baselines.</p></div></div>
+    <div class="chart-head"><div><h3 class="chart-title">Rounds before and after the first observed change</h3><p class="chart-sub">Trigger rule, visitor intent and unstable storage: the 54 episodes that all five methods solve. Before the change no difference is significant; after it, the paired 95% CIs of BeliefAct's savings exclude zero against Naive, BSG and PCE, but not against HUME.</p></div></div>
     <div class="chart" id="ch-onset"></div>
   </div>
   <div class="grid-2">
@@ -308,7 +308,7 @@
 
   // ---------- results ----------
   BACharts.budget($('ch-budget'), BA.results.curves);
-  BACharts.onset($('ch-onset'), { beliefact: { before: 11.1, after: 20.0 }, naive: { before: 12.9, after: 25.6 }, bsg: { before: 13.0, after: 29.8 }, pce: { before: 11.8, after: 31.9 } });
+  BACharts.onset($('ch-onset'), { beliefact: { before: 11.2, after: 19.8 }, naive: { before: 13.0, after: 24.7 }, bsg: { before: 13.2, after: 29.7 }, pce: { before: 11.9, after: 32.2 }, hume: { before: 13.2, after: 21.7 } });
   BACharts.slope($('ch-slope'), [
     { task: 'Unstable storage', before: 0.36, after: 0.75 }, { task: 'Trigger rule', before: 0.32, after: 0.53 },
     { task: 'Food splitting rule', before: 0.24, after: 0.37 }, { task: 'Visitor intent', before: 0.17, after: 0.33 },
