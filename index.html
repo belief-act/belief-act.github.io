@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BeliefAct · Grounded in Imagination</title>
+<meta name="description" content="BeliefAct: belief-guided embodied task planning in uncertain, dynamic environments. Project page with replays of DUET-Bench episodes.">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="#top">BeliefAct</a>
+  <div class="nav-links">
+    <a class="hide-sm" href="#overview">Overview</a>
+    <a class="hide-sm" href="#replays">Replays</a>
+    <a class="hide-sm" href="#method">Method</a>
+    <a class="hide-sm" href="#bench">DUET-Bench</a>
+    <a class="hide-sm" href="#results">Results</a>
+    <a class="hide-sm" href="#citation">Citation</a>
+    <a class="pill" href="assets/paper.pdf">Paper</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <p class="eyebrow">Stanford University</p>
+  <h1 class="h1">Grounded in Imagination</h1>
+  <p class="sub">Belief-guided embodied task planning in uncertain, dynamic environments</p>
+  <p class="authors"><span>Anqi Li*</span><span>Yijia Weng*</span><span>Yang You</span><span>Yining Hong</span><span>Leonidas Guibas</span></p>
+  <p class="affil">Stanford University · *Equal contribution</p>
+  <div class="cta-row">
+    <a class="pill lg" href="assets/paper.pdf">Read the paper</a>
+    <a class="pill lg ghost" href="https://github.com/andyhandsom6/BeliefAct">Code</a>
+  </div>
+  <div class="hero-stage card reveal">
+    <div class="stage" id="hero-stage"><div class="chip" id="hero-chip">Trigger rule · BeliefAct, Naive, BSG and PCE on the same episode</div></div>
+    <div class="controls" style="justify-content:space-between">
+      <div class="legend" id="hero-legend"></div>
+      <span class="small"><span id="hero-status"></span> · <a href="assets/video/trigger_rule_four_planners_3d.mp4">Video (1080p, 60 fps)</a></span>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="overview"><div class="wrap center">
+  <p class="eyebrow">Overview</p>
+  <h2 class="h2">Plan with beliefs about what the robot cannot see.</h2>
+  <p class="lede">A household robot faces unknown object locations, unstated arrangement preferences, and a housemate who moves things by unclear habits. <strong>BeliefAct</strong> represents task-relevant unknowns as free-form questions with probability-weighted answers, pairs each answer with an action that would test it and the observation expected if it holds, and reweights the answers against what it then observes.</p>
+  <div class="stats">
+    <div class="stat reveal"><div class="num">75.0%</div><div class="what">of DUET-Bench episodes completed within 60 rounds, against at most 67.5% for the baselines (200-round horizon in the main runs).</div></div>
+    <div class="stat reveal"><div class="num">61.4 <small>rounds</small></div><div class="what">per episode at matched final success (86.7%), 6% fewer than the closest baseline (HUME, 65.3), with the lowest interaction cost.</div></div>
+    <div class="stat reveal"><div class="num">20.0 <small>vs. 25.6–31.9</small></div><div class="what">rounds from the first observed change to completion, in the 56 trigger-rule, visitor-intent and unstable-storage episodes that BeliefAct, Naive, BSG and PCE all solve. Before that change, these methods need 11–13 rounds.</div></div>
+  </div>
+  <div class="card figure-card reveal" style="margin-top:56px"><img src="assets/img/fig1.png" alt="A DUET-Bench household and BeliefAct's beliefs"></div>
+</div></section>
+
+<section class="section alt" id="replays"><div class="wrap wide">
+  <div class="center">
+    <p class="eyebrow">Replays</p>
+    <h2 class="h2">Same episode, different planners.</h2>
+    <p class="lede">Logged runs from the paper's main experiment (Gemini 3.8 Flash). Each circle is a robot; its position after every action is the logged pose. The line between two positions is a shortest walkable route, drawn for display.</p>
+    <p class="small" style="margin-top:14px">Scenes rendered in NVIDIA Isaac Sim from BEHAVIOR-1K. <a href="assets/video/trigger_rule_beliefact_vs_pce.mp4">Video: BeliefAct vs. PCE in trigger rule (1080p, 60 fps)</a></p>
+  </div>
+  <div class="tabs" id="tabs" role="tablist"></div>
+  <div class="replay">
+    <div>
+      <div class="card stage-card">
+        <div class="stage" id="stage">
+          <div class="chip" id="chip"></div>
+          <div class="roundbig"><div class="n" id="rn">1</div><div class="l">round</div></div>
+          <div class="montage" id="montage"><div class="t"><span class="dot"></span><span class="r" id="m-r"></span><span id="m-t"></span></div><div class="d" id="m-d"></div></div>
+        </div>
+        <div class="controls">
+          <button class="play" id="play" aria-label="Play"><svg viewBox="0 0 16 16" id="play-ic"><path d="M4 2.5v11l9-5.5z"/></svg></button>
+          <div class="scrub" id="scrub"><div class="rail"></div><div class="fill" id="fill"></div><input type="range" id="range" min="0" max="100" step="0.01" value="0" aria-label="Round"></div>
+          <div class="ctl-group"><span class="ctl-label">vs.</span><div class="seg" id="cmp"></div></div>
+          <div class="ctl-group"><div class="seg" id="spd"></div></div>
+          <div class="ctl-group"><div class="seg" id="lyr"></div></div>
+        </div>
+      </div>
+      <div class="moments" id="moments"></div>
+    </div>
+    <aside class="card panel">
+      <h3 class="task-title" id="p-title"></h3>
+      <div class="scene" id="p-scene"></div>
+      <p class="lead" id="p-lead"></p>
+      <div class="hidden-box"><b>Hidden from the robot</b><span id="p-hidden"></span></div>
+      <div class="board" id="board"></div>
+      <h4>BeliefAct's belief this round</h4>
+      <div id="belief"></div>
+      <h4>Stated reasoning this round</h4>
+      <div class="thought" id="thought"></div>
+    </aside>
+  </div>
+</div></section>
+
+<section class="section" id="method"><div class="wrap">
+  <div class="center">
+    <p class="eyebrow">Method</p>
+    <h2 class="h2">One LLM call per round updates the belief and picks the action.</h2>
+  </div>
+  <div class="card figure-card reveal" style="margin-top:36px"><img src="assets/img/fig2.png" alt="BeliefAct overview"></div>
+  <div class="feature-grid">
+    <div class="feature reveal"><div class="k">Belief</div><h3 class="h3">Questions with weighted answers</h3><p>Unknowns are free-form questions, each with candidate answers and probabilities, so the belief is not tied to a fixed state space.</p></div>
+    <div class="feature reveal"><div class="k">Test</div><h3 class="h3">An action and an expected observation</h3><p>Every answer carries an action that would settle it and the observation expected if it holds.</p></div>
+    <div class="feature reveal"><div class="k">Revision</div><h3 class="h3">Compare and merge</h3><p>Each round the LLM returns a belief update, an action and a message; the update is merged into the belief, and answers are reweighted against the new observation.</p></div>
+  </div>
+</div></section>
+
+<section class="section alt" id="bench"><div class="wrap">
+  <div class="center">
+    <p class="eyebrow">DUET-Bench</p>
+    <h2 class="h2">Eight household task families on BEHAVIOR-1K.</h2>
+    <p class="lede">240 episodes in which the initial configuration, the goal interpretation, or an external process is uncertain.</p>
+  </div>
+  <div class="card figure-card reveal" style="margin-top:36px"><img src="assets/img/fig3.png" alt="The eight DUET-Bench task families"></div>
+</div></section>
+
+<section class="section" id="results"><div class="wrap">
+  <div class="center">
+    <p class="eyebrow">Results</p>
+    <h2 class="h2">Fewer rounds, with the largest savings after the scene changes.</h2>
+    <p class="lede">240 DUET-Bench episodes with Gemini 3.8 Flash and a 200-round horizon. BeliefAct matches the strongest baselines in final success and needs fewer rounds.</p>
+  </div>
+  <div class="card chart-card reveal" style="margin-top:44px">
+    <div class="chart-head"><div><h3 class="chart-title">Episodes completed within a round budget</h3><p class="chart-sub">Re-scored from the main runs: an episode counts if it succeeded within H′ rounds. Hover to read values.</p></div></div>
+    <div class="chart" id="ch-budget"></div>
+  </div>
+  <div class="card chart-card reveal" style="margin-top:22px">
+    <div class="chart-head"><div><h3 class="chart-title">Rounds before and after the first observed change</h3><p class="chart-sub">Trigger rule, visitor intent and unstable storage: the 56 episodes that Naive, BSG, PCE and BeliefAct all solve. Before the change no difference is significant; after it, the paired 95% CIs of BeliefAct's savings exclude zero against all three baselines.</p></div></div>
+    <div class="chart" id="ch-onset"></div>
+  </div>
+  <div class="grid-2">
+    <div class="card chart-card reveal">
+      <div class="chart-head"><div><h3 class="chart-title">Probability on the true answer</h3><p class="chart-sub">BeliefAct's belief against the simulator's hidden state: mean probability on the true answer before and after the first relevant evidence, per task (Appendix A.4 of the paper).</p></div></div>
+      <div class="chart" id="ch-slope"></div>
+    </div>
+    <div class="card chart-card reveal">
+      <div class="chart-head"><div><h3 class="chart-title">Main results</h3><p class="chart-sub">Success rate, rounds and interaction cost per episode (Table 1 of the paper).</p></div></div>
+      <div class="table-wrap" style="margin-top:14px"><table class="data-table" id="tbl-main"></table></div>
+      <p class="small" style="margin-top:12px">HUME is adapted to DUET-Bench and receives the same context as BeliefAct (Appendix A.2 of the paper). On two-agent Communicative Watch-and-Help, BeliefAct matches the baselines in task completion.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="section alt" id="citation"><div class="wrap">
+  <p class="eyebrow">Citation</p>
+  <pre class="bib" id="bib">@article{li2026grounded,
+  title   = {Grounded in Imagination: Belief-Guided Embodied Task Planning in Uncertain, Dynamic Environments},
+  author  = {Li, Anqi and Weng, Yijia and You, Yang and Hong, Yining and Guibas, Leonidas},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</pre>
+  <button class="pill ghost copy" id="copy">Copy BibTeX</button>
+</div></section>
+
+<footer><div class="wrap"><span>Stanford University</span><span>Scenes from BEHAVIOR-1K.</span></div></footer>
+
+<script src="data/stories.js"></script>
+<script src="assets/js/replay.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="data/results.js"></script>
+<script>
+(function () {
+  const C = BAReplay.COLORS, NAMES = { beliefact: 'BeliefAct', naive: 'Naive', bsg: 'BSG', pce: 'PCE' };
+  const ACT = { navigate: 'walks to', navigate_through: 'goes through a door', open: 'opens', grasp: 'picks up', place: 'places on', scan_360: 'looks around', wait: 'waits', declare_done: 'declares done' };
+  const $ = (id) => document.getElementById(id);
+  const loaded = {};
+  function loadCase(id) {
+    return new Promise((res) => {
+      if (window.BA.cases[id]) return res(BA.cases[id]);
+      const s = document.createElement('script'); s.src = 'data/cases/' + id + '.js';
+      s.onload = () => res(BA.cases[id]); document.head.appendChild(s);
+    });
+  }
+  // Scene-object ids (e.g. door_lvgliq_0) become readable names; when a case mentions several
+  // objects of one category, they are numbered in order of first mention (door 1, door 2, ...).
+  const OBJ_ID = /\b([a-z]+(?:_[a-z]+)*)_[a-z]{6}_\d+\b/g;
+  function objectNames(d) {
+    if (d._names) return d._names;
+    const seen = {}, names = {};
+    for (const m of JSON.stringify(d).matchAll(OBJ_ID)) {
+      if (/^(?:sv_obj|task_obj)/.test(m[0]) || names[m[0]] !== undefined) continue;
+      (seen[m[1]] = seen[m[1]] || []).push(m[0]); names[m[0]] = null;
+    }
+    for (const base in seen) seen[base].forEach((id, i) => { names[id] = base.replace(/_/g, ' ') + (seen[base].length > 1 ? ' ' + (i + 1) : ''); });
+    Object.defineProperty(d, '_names', { value: names, enumerable: false });
+    return names;
+  }
+  function pretty(s, d) {
+    if (!s) return '';
+    const items = (d && d.items) || {};
+    const names = d ? objectNames(d) : {};
+    return s
+      .replace(/\b(?:sv_obj|task_obj)_\d+_([a-z]{6})\b(\s*\([^)]*\))?/g, (m, code, paren) => (paren ? paren.trim().slice(1, -1) : (items[code] || 'item')))
+      .replace(/\b(?:sv_obj|task_obj)_(\d+)\b/g, (m, n) => ((d && d.items_idx && d.items_idx[n]) || 'item'))
+      .replace(OBJ_ID, (m, base) => names[m] || base.replace(/_/g, ' '))
+      .replace(/\b([a-z]+(?:_[a-z]+)*)_(\d+)\b/g, (m, base, n) => base.replace(/_/g, ' ') + ' ' + n)
+      .replace(/_/g, ' ');
+  }
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function actText(r) {
+    if (!r) return '';
+    const v = ACT[r.a] || r.a; const arg = r.a === 'navigate_through' || r.a === 'scan_360' || r.a === 'wait' || r.a === 'declare_done' ? '' : (r.arg || '');
+    return (v + ' ' + arg).trim();
+  }
+  function endText(md) {
+    if (md.success) return `Completed in ${md.rounds} rounds`;
+    if (md.ended_by === 'declare_done') return `Declared done at round ${md.rounds}; task not complete`;
+    return `Out of rounds (${md.rounds})`;
+  }
+  // reveal on scroll
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  $('copy').onclick = () => navigator.clipboard && navigator.clipboard.writeText($('bib').textContent);
+
+  // ---------- hero: BeliefAct and three baselines on one episode ----------
+  const hero = new BAReplay.Replay($('hero-stage'), { highlights: false, loop: true, secPerRound: 0.32, showEntities: true, trail: 'recent', recent: 5, fit: 'image' });
+  window.BA.hero = hero;
+  loadCase('trigger_rule__Ihlen_1_int_s45').then((d) => {
+    hero.load(d, 'iso' in d.layers ? 'iso' : 'plan', ['beliefact', 'naive', 'bsg', 'pce'], []);
+    $('hero-legend').innerHTML = BAReplay.ORDER.map((k) => `<span><i style="background:${C[k]}"></i>${NAMES[k]} · ${d.methods[k].rounds} rounds</span>`).join('');
+    hero.onTick = (t) => {
+      const r = Math.min(Math.floor(t) + 1, hero.maxR);
+      const done = BAReplay.ORDER.filter((k) => t >= d.methods[k].rounds).map((k) => `${NAMES[k]} done`);
+      $('hero-status').textContent = 'Round ' + r + (done.length ? ' · ' + done.join(' · ') : '');
+    };
+    hero.play();
+  });
+
+  // ---------- replay section ----------
+  const rp = new BAReplay.Replay($('stage'), { highlights: true });
+  window.BA.replay = rp;
+  let story = null, data = null, cmp = null, lastK = -1, layerSel = 'top';
+  const tabs = $('tabs');
+  BA.stories.forEach((s, i) => {
+    const b = document.createElement('button'); b.className = 'tab'; b.role = 'tab';
+    b.innerHTML = s.tab + (s.paper ? '<span class="tag">paper</span>' : '');
+    b.onclick = () => select(i); tabs.appendChild(b);
+  });
+  function seg(el, items, cur, on) {
+    el.innerHTML = '';
+    items.forEach(([k, label]) => { const b = document.createElement('button'); b.textContent = label; b.setAttribute('aria-pressed', k === cur); b.onclick = () => { [...el.children].forEach((x) => x.setAttribute('aria-pressed', 'false')); b.setAttribute('aria-pressed', 'true'); on(k); }; el.appendChild(b); });
+  }
+  seg($('spd'), [[1, '1×'], [2, '2×'], [4, '4×']], 1, (k) => (rp.speed = k));
+  function moments() {
+    const ms = story.moments.map((m) => Object.assign({ who: 'beliefact' }, m));
+    for (const k of agentKeys()) {
+      const md = data.methods[k];
+      if (k !== 'beliefact') (md.events || []).slice(0, 3).forEach((e) => ms.push({ r: e.r, who: k, title: NAMES[k] + ': ' + e.text, text: '', zoom: false }));
+      ms.push({ r: md.rounds - 1, who: k, title: NAMES[k] + ' · ' + endText(md), text: '', zoom: k === 'beliefact' });
+    }
+    return ms.sort((a, b) => a.r - b.r);
+  }
+  function agentKeys() { return cmp === 'all' ? ['beliefact', 'naive', 'bsg', 'pce'] : ['beliefact', cmp]; }
+  function select(i) {
+    story = BA.stories[i];
+    [...tabs.children].forEach((b, j) => b.setAttribute('aria-selected', i === j));
+    loadCase(story.id).then((d) => {
+      data = d; cmp = story.compare;
+      seg($('cmp'), [['naive', 'Naive'], ['bsg', 'BSG'], ['pce', 'PCE'], ['all', 'All']], cmp, (k) => { cmp = k; reload(); });
+      const lyrs = ['top', 'iso', 'plan'].filter((k) => k in d.layers).map((k) => [k, { plan: 'Plan', top: 'Top view', iso: '3D' }[k]]);
+      layerSel = 'top' in d.layers ? 'top' : 'plan';
+      seg($('lyr'), lyrs, layerSel, (k) => { layerSel = k; rp.setLayer(k); });
+      $('lyr').parentNode.style.display = lyrs.length > 1 ? '' : 'none';
+      $('p-title').textContent = d.task_label; $('p-scene').textContent = d.scene.replace(/_/g, ' ') + ' · ' + (d.family === 'dynamic' ? 'dynamic task' : 'static task');
+      $('p-lead').textContent = story.lead; $('p-hidden').textContent = ' ' + story.hidden;
+      reload();
+    });
+  }
+  function reload() {
+    const ms = moments();
+    rp.load(data, layerSel, agentKeys(), ms);
+    $('range').max = rp.maxR; $('chip').textContent = data.task_label + ' · ' + data.instance.replace(/_/g, ' ');
+    const sc = $('scrub'); sc.querySelectorAll('.mk,.fin').forEach((x) => x.remove());
+    ms.forEach((m) => { if (m.zoom === false && !/Completed|Declared|Out of/.test(m.title)) return; const el = document.createElement('div'); el.className = /Completed|Declared|Out of/.test(m.title) ? 'fin' : 'mk'; el.style.left = (100 * (m.r + 0.8) / rp.maxR) + '%'; el.style.background = C[m.who]; sc.appendChild(el); });
+    const box = $('moments'); box.innerHTML = '';
+    ms.filter((m) => m.text).forEach((m) => { const b = document.createElement('button'); b.className = 'moment'; b.innerHTML = `<div class="r"><i style="background:${C[m.who]}"></i>Round ${m.r + 1}</div><div class="t">${m.title}</div><div class="d">${m.text}</div>`; b.onclick = () => { rp.seek(m.r + 0.79); rp.play(); setPlay(); }; m.el = b; box.appendChild(b); });
+    lastK = -1; rp.onTick(0); rp.play(); setPlay();
+  }
+  rp.onMoment = (m) => {
+    const mt = $('montage');
+    if (!m || !m.text) { mt.classList.remove('on'); return; }
+    mt.querySelector('.dot').style.background = C[m.who]; $('m-r').textContent = 'Round ' + (m.r + 1); $('m-t').textContent = m.title; $('m-d').textContent = m.text;
+    mt.classList.add('on'); document.querySelectorAll('.moment').forEach((x) => x.classList.remove('active')); if (m.el) { m.el.classList.add('active'); const box = $('moments'); box.scrollTo({ left: m.el.offsetLeft - box.offsetLeft - 8, behavior: 'smooth' }); }
+  };
+  rp.onTick = (t) => {
+    $('range').value = t; $('fill').style.width = (100 * t / rp.maxR) + '%';
+    const k = Math.min(Math.floor(t), rp.maxR - 1); $('rn').textContent = k + 1;
+    if (k === lastK) return; lastK = k;
+    $('board').innerHTML = agentKeys().map((key) => {
+      const md = data.methods[key]; const done = t >= md.rounds;
+      const st = done ? endText(md) : actText(md.track[k]);
+      const badge = done ? (md.success ? '<span class="badge ok">done</span>' : '<span class="badge no">failed</span>') : '';
+      return `<div class="agent-row"><span class="sw" style="background:${C[key]}"></span><span class="nm">${NAMES[key]}${badge}</span><span class="rn">${md.rounds} rounds</span><span class="st">${st}</span></div>`;
+    }).join('');
+    const b = data.methods.beliefact; const bk = Math.min(k, b.rounds - 1);
+    let bsrc = bk;
+    while (bsrc > 0 && !(b.belief[bsrc] || []).some((q) => q.answers.length)) bsrc--;
+    let qs = (b.belief[bsrc] || []).filter((q) => q.answers.length);
+    qs.sort((x, y) => ((y.id || '') + y.q).toLowerCase().includes(story.focus) - ((x.id || '') + x.q).toLowerCase().includes(story.focus));
+    $('belief').innerHTML = (qs.length && bsrc < bk ? `<div class="empty-note" style="margin-bottom:6px">Last updated in round ${bsrc + 1}</div>` : '') + (qs.length ? qs.slice(0, 2).map((q) => `<div class="belief-q"><div class="q">${esc(pretty(q.q || q.id, data))}</div>${q.answers.slice().sort((a, c) => (c.p || 0) - (a.p || 0)).slice(0, 4).map((a) => `<div class="ans ${a.s || ''}"><span class="txt">${esc(pretty(a.t, data))}</span><span class="p">${a.p == null ? '–' : a.p.toFixed(2)}</span><span class="bar"><i style="width:${100 * (a.p || 0)}%"></i></span></div>`).join('')}</div>`).join('') : '<div class="empty-note">No open question recorded yet.</div>');
+    const th = b.thought[bk] || ''; $('thought').innerHTML = `<div class="who" style="color:${C.beliefact}">BeliefAct, round ${bk + 1}</div>${esc(pretty(th, data))}`;
+  };
+  function setPlay() { $('play-ic').innerHTML = rp.playing ? '<path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/>' : '<path d="M4 2.5v11l9-5.5z"/>'; }
+  $('play').onclick = () => { rp.playing ? rp.pause() : rp.play(); setPlay(); };
+  $('range').oninput = (e) => { rp.seek(parseFloat(e.target.value)); rp.pause(); setPlay(); $('montage').classList.remove('on'); };
+  setInterval(setPlay, 500);
+  select(0);
+
+  // ---------- results ----------
+  BACharts.budget($('ch-budget'), BA.results.curves);
+  BACharts.onset($('ch-onset'), { beliefact: { before: 11.1, after: 20.0 }, naive: { before: 12.9, after: 25.6 }, bsg: { before: 13.0, after: 29.8 }, pce: { before: 11.8, after: 31.9 } });
+  BACharts.slope($('ch-slope'), [
+    { task: 'Unstable storage', before: 0.36, after: 0.75 }, { task: 'Trigger rule', before: 0.32, after: 0.53 },
+    { task: 'Food splitting rule', before: 0.24, after: 0.37 }, { task: 'Visitor intent', before: 0.17, after: 0.33 },
+    { task: 'Division of labor', before: 0.08, after: 0.26 }, { task: 'Meal composition', before: 0.76, after: 0.73 }]);
+  const T = [['Naive', 83.3, 77.1, 137.2, 76.7, 86.6, 275.5, 89.2, 51.1, 141.6, 84.6, 66.5, 174.0], ['BSG', 76.7, 81.4, 144.4, 80.0, 91.6, 287.1, 92.5, 48.6, 138.7, 85.4, 67.5, 177.2],
+    ['PCE', 83.3, 76.1, 149.5, 71.7, 98.7, 283.4, 87.5, 56.1, 151.1, 82.5, 71.7, 183.8], ['HUME', 83.3, 74.0, 142.3, 78.3, 81.0, 326.3, 88.3, 53.1, 128.3, 84.6, 65.3, 181.3],
+    ['BeliefAct', 85.0, 78.4, 153.5, 78.3, 79.1, 274.6, 91.7, 44.1, 125.3, 86.7, 61.4, 169.7]];
+  $('tbl-main').innerHTML = '<thead><tr><th></th><th class="grp" colspan="3">Overall (240)</th><th class="grp" colspan="3">Dynamic (120)</th></tr><tr><th>Method</th><th>SR %</th><th>Rounds</th><th>Cost m</th><th>SR %</th><th>Rounds</th><th>Cost m</th></tr></thead><tbody>' +
+    T.map((r) => `<tr class="${r[0] === 'BeliefAct' ? 'ours' : ''}"><td>${r[0]}</td><td>${r[10].toFixed(1)}</td><td>${r[11].toFixed(1)}</td><td>${r[12].toFixed(1)}</td><td>${r[7].toFixed(1)}</td><td>${r[8].toFixed(1)}</td><td>${r[9].toFixed(1)}</td></tr>`).join('') + '</tbody>';
+})();
+</script>
+</body>
+</html>

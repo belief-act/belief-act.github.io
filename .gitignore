@@ -1,0 +1,3 @@
+# Internal render and extraction scripts (cluster-specific paths) and their intermediate files
+tools/
+data/cases/*.json

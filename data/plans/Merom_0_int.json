@@ -1,0 +1,94 @@
+{
+ "scene": "Merom_0_int",
+ "png": "assets/plans/Merom_0_int.png",
+ "W": 444,
+ "H": 630,
+ "x0": -3.23,
+ "x1": 5.65,
+ "y0": -2.44,
+ "y1": 10.17,
+ "s": 0.02,
+ "rooms": [
+  {
+   "name": "bathroom_0",
+   "label": "bathroom",
+   "x": 3.96,
+   "y": 5.16,
+   "area_m2": 4.9
+  },
+  {
+   "name": "childs_room_0",
+   "label": "childs room",
+   "x": 3.14,
+   "y": 0.07,
+   "area_m2": 20.9
+  },
+  {
+   "name": "closet_0",
+   "label": "closet",
+   "x": 3.77,
+   "y": 3.57,
+   "area_m2": 1.7
+  },
+  {
+   "name": "living_room_0",
+   "label": "living room",
+   "x": 3.14,
+   "y": 8.22,
+   "area_m2": 18.4
+  },
+  {
+   "name": "playroom_0",
+   "label": "playroom",
+   "x": -0.7,
+   "y": 5.99,
+   "area_m2": 18.0
+  },
+  {
+   "name": "storage_room_0",
+   "label": "storage room",
+   "x": -1.19,
+   "y": 10.16,
+   "area_m2": 5.6
+  },
+  {
+   "name": "utility_room_0",
+   "label": "utility room",
+   "x": -0.71,
+   "y": 0.08,
+   "area_m2": 22.8
+  }
+ ],
+ "doors": [
+  {
+   "name": "door_lvgliq_0",
+   "x": 1.23,
+   "y": 7.73
+  },
+  {
+   "name": "door_lvgliq_1",
+   "x": 2.2,
+   "y": 4.06
+  },
+  {
+   "name": "door_lvgliq_2",
+   "x": 2.86,
+   "y": 5.67
+  },
+  {
+   "name": "door_lvgliq_3",
+   "x": 0.7,
+   "y": 8.71
+  },
+  {
+   "name": "door_lvgliq_4",
+   "x": 4.12,
+   "y": 3.09
+  },
+  {
+   "name": "door_ohagsq_0",
+   "x": 3.37,
+   "y": 10.19
+  }
+ ]
+}

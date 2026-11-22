@@ -1,0 +1,151 @@
+{
+ "scene": "Wainscott_0_garden",
+ "png": "assets/plans/Wainscott_0_garden.png",
+ "W": 1646,
+ "H": 2589,
+ "x0": -15.18,
+ "x1": 17.740000000000002,
+ "y0": -32.49,
+ "y1": 19.29,
+ "s": 0.02,
+ "rooms": [
+  {
+   "name": "bathroom_0",
+   "label": "bathroom",
+   "x": 2.36,
+   "y": 0.54,
+   "area_m2": 3.1
+  },
+  {
+   "name": "bathroom_1",
+   "label": "bathroom",
+   "x": 2.7,
+   "y": -1.4,
+   "area_m2": 6.4
+  },
+  {
+   "name": "bedroom_0",
+   "label": "bedroom",
+   "x": 10.41,
+   "y": 1.21,
+   "area_m2": 15.4
+  },
+  {
+   "name": "corridor_0",
+   "label": "corridor",
+   "x": 3.7,
+   "y": 2.78,
+   "area_m2": 20.3
+  },
+  {
+   "name": "dining_room_0",
+   "label": "dining room",
+   "x": -2.1,
+   "y": 6.71,
+   "area_m2": 20.4
+  },
+  {
+   "name": "garden_0",
+   "label": "garden",
+   "x": 2.21,
+   "y": -17.54,
+   "area_m2": 1456.1
+  },
+  {
+   "name": "kitchen_0",
+   "label": "kitchen",
+   "x": -6.68,
+   "y": 8.17,
+   "area_m2": 35.4
+  },
+  {
+   "name": "living_room_0",
+   "label": "living room",
+   "x": -9.08,
+   "y": 2.97,
+   "area_m2": 12.5
+  },
+  {
+   "name": "living_room_1",
+   "label": "living room",
+   "x": -2.08,
+   "y": -0.25,
+   "area_m2": 29.1
+  },
+  {
+   "name": "living_room_2",
+   "label": "living room",
+   "x": 6.5,
+   "y": -0.41,
+   "area_m2": 18.2
+  },
+  {
+   "name": "storage_room_0",
+   "label": "storage room",
+   "x": -4.22,
+   "y": 4.59,
+   "area_m2": 2.1
+  },
+  {
+   "name": "storage_room_1",
+   "label": "storage room",
+   "x": 9.48,
+   "y": -1.68,
+   "area_m2": 3.5
+  },
+  {
+   "name": "storage_room_2",
+   "label": "storage room",
+   "x": 3.59,
+   "y": 0.15,
+   "area_m2": 1.0
+  }
+ ],
+ "doors": [
+  {
+   "name": "door_lvgliq_0",
+   "x": 8.63,
+   "y": -1.07
+  },
+  {
+   "name": "door_lvgliq_1",
+   "x": -4.79,
+   "y": 4.61
+  },
+  {
+   "name": "door_lvgliq_2",
+   "x": 4.38,
+   "y": 1.07
+  },
+  {
+   "name": "door_lvgliq_3",
+   "x": 4.38,
+   "y": -0.79
+  },
+  {
+   "name": "door_lvgliq_4",
+   "x": 3.78,
+   "y": 0.56
+  },
+  {
+   "name": "door_lvgliq_5",
+   "x": 3.17,
+   "y": 1.02
+  },
+  {
+   "name": "door_myihfn_0",
+   "x": 2.64,
+   "y": 4.01
+  },
+  {
+   "name": "door_pzgdls_0",
+   "x": 0.91,
+   "y": -2.52
+  },
+  {
+   "name": "door_zniqtp_0",
+   "x": -9.3,
+   "y": 5.84
+  }
+ ]
+}

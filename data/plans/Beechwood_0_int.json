@@ -1,0 +1,137 @@
+{
+ "scene": "Beechwood_0_int",
+ "png": "assets/plans/Beechwood_0_int.png",
+ "W": 704,
+ "H": 678,
+ "x0": -6.9,
+ "x1": 7.19,
+ "y0": -10.39,
+ "y1": 3.17,
+ "s": 0.02,
+ "rooms": [
+  {
+   "name": "bathroom_0",
+   "label": "bathroom",
+   "x": 2.16,
+   "y": -0.26,
+   "area_m2": 4.5
+  },
+  {
+   "name": "corridor_0",
+   "label": "corridor",
+   "x": 1.91,
+   "y": -2.64,
+   "area_m2": 6.9
+  },
+  {
+   "name": "dining_room_0",
+   "label": "dining room",
+   "x": -4.44,
+   "y": -4.94,
+   "area_m2": 15.6
+  },
+  {
+   "name": "kitchen_0",
+   "label": "kitchen",
+   "x": -0.18,
+   "y": -7.43,
+   "area_m2": 26.2
+  },
+  {
+   "name": "living_room_0",
+   "label": "living room",
+   "x": 4.39,
+   "y": -7.45,
+   "area_m2": 20.3
+  },
+  {
+   "name": "living_room_1",
+   "label": "living room",
+   "x": -3.27,
+   "y": -0.21,
+   "area_m2": 30.4
+  },
+  {
+   "name": "private_office_0",
+   "label": "private office",
+   "x": 4.78,
+   "y": -3.48,
+   "area_m2": 11.7
+  },
+  {
+   "name": "storage_room_0",
+   "label": "storage room",
+   "x": -0.9,
+   "y": -4.46,
+   "area_m2": 2.6
+  },
+  {
+   "name": "storage_room_1",
+   "label": "storage room",
+   "x": 2.44,
+   "y": -4.8,
+   "area_m2": 1.0
+  },
+  {
+   "name": "storage_room_2",
+   "label": "storage room",
+   "x": 6.13,
+   "y": 0.32,
+   "area_m2": 1.8
+  },
+  {
+   "name": "utility_room_0",
+   "label": "utility room",
+   "x": 4.24,
+   "y": -0.89,
+   "area_m2": 7.1
+  }
+ ],
+ "doors": [
+  {
+   "name": "door_lvgliq_0",
+   "x": 2.12,
+   "y": -4.34
+  },
+  {
+   "name": "door_lvgliq_1",
+   "x": 3.19,
+   "y": -2.48
+  },
+  {
+   "name": "door_lvgliq_2",
+   "x": 3.41,
+   "y": -1.56
+  },
+  {
+   "name": "door_lvgliq_3",
+   "x": 2.43,
+   "y": -1.49
+  },
+  {
+   "name": "door_lvgliq_4",
+   "x": 0.71,
+   "y": -4.43
+  },
+  {
+   "name": "door_lvgliq_5",
+   "x": 5.17,
+   "y": 0.06
+  },
+  {
+   "name": "door_ohagsq_0",
+   "x": 0.01,
+   "y": 0.82
+  },
+  {
+   "name": "door_ohagsq_1",
+   "x": -4.4,
+   "y": -2.62
+  },
+  {
+   "name": "door_ohagsq_2",
+   "x": 0.62,
+   "y": -10.36
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "scene": "Rs_garden",
+ "png": "assets/plans/Rs_garden.png",
+ "W": 595,
+ "H": 1239,
+ "x0": -6.45,
+ "x1": 5.45,
+ "y0": -10.78,
+ "y1": 14.0,
+ "s": 0.02,
+ "rooms": [
+  {
+   "name": "bathroom_0",
+   "label": "bathroom",
+   "x": 2.67,
+   "y": -3.04,
+   "area_m2": 3.9
+  },
+  {
+   "name": "bedroom_0",
+   "label": "bedroom",
+   "x": 2.67,
+   "y": -1.06,
+   "area_m2": 6.9
+  },
+  {
+   "name": "entryway_0",
+   "label": "entryway",
+   "x": -1.59,
+   "y": -2.76,
+   "area_m2": 2.9
+  },
+  {
+   "name": "garden_0",
+   "label": "garden",
+   "x": -0.36,
+   "y": 8.81,
+   "area_m2": 216.5
+  },
+  {
+   "name": "kitchen_0",
+   "label": "kitchen",
+   "x": 0.13,
+   "y": -3.02,
+   "area_m2": 5.1
+  },
+  {
+   "name": "living_room_0",
+   "label": "living room",
+   "x": -0.31,
+   "y": -0.01,
+   "area_m2": 22.8
+  }
+ ],
+ "doors": [
+  {
+   "name": "door_ktydvs_0",
+   "x": 2.22,
+   "y": -2.05
+  },
+  {
+   "name": "door_lvgliq_0",
+   "x": -1.38,
+   "y": -4.01
+  },
+  {
+   "name": "door_lvgliq_1",
+   "x": -1.75,
+   "y": 3.62
+  }
+ ]
+}

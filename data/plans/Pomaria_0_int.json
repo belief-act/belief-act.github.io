@@ -1,0 +1,123 @@
+{
+ "scene": "Pomaria_0_int",
+ "png": "assets/plans/Pomaria_0_int.png",
+ "W": 732,
+ "H": 408,
+ "x0": -12.92,
+ "x1": 1.72,
+ "y0": -3.5700000000000003,
+ "y1": 4.59,
+ "s": 0.02,
+ "rooms": [
+  {
+   "name": "bathroom_0",
+   "label": "bathroom",
+   "x": -0.09,
+   "y": 3.02,
+   "area_m2": 6.2
+  },
+  {
+   "name": "bedroom_0",
+   "label": "bedroom",
+   "x": -0.41,
+   "y": -1.44,
+   "area_m2": 11.9
+  },
+  {
+   "name": "bedroom_1",
+   "label": "bedroom",
+   "x": -3.41,
+   "y": -1.51,
+   "area_m2": 11.4
+  },
+  {
+   "name": "closet_0",
+   "label": "closet",
+   "x": -0.45,
+   "y": 1.01,
+   "area_m2": 1.6
+  },
+  {
+   "name": "closet_1",
+   "label": "closet",
+   "x": -4.22,
+   "y": 1.0,
+   "area_m2": 1.4
+  },
+  {
+   "name": "corridor_0",
+   "label": "corridor",
+   "x": -5.55,
+   "y": 1.74,
+   "area_m2": 5.9
+  },
+  {
+   "name": "living_room_0",
+   "label": "living room",
+   "x": -10.72,
+   "y": -0.69,
+   "area_m2": 31.0
+  },
+  {
+   "name": "private_office_0",
+   "label": "private office",
+   "x": -6.7,
+   "y": -1.15,
+   "area_m2": 14.7
+  },
+  {
+   "name": "storage_room_0",
+   "label": "storage room",
+   "x": -4.1,
+   "y": 3.2,
+   "area_m2": 4.6
+  }
+ ],
+ "doors": [
+  {
+   "name": "door_lvgliq_0",
+   "x": -6.23,
+   "y": 1.67
+  },
+  {
+   "name": "door_lvgliq_1",
+   "x": -2.5,
+   "y": 1.43
+  },
+  {
+   "name": "door_lvgliq_2",
+   "x": -1.41,
+   "y": 1.43
+  },
+  {
+   "name": "door_lvgliq_3",
+   "x": -2.5,
+   "y": 2.42
+  },
+  {
+   "name": "door_lvgliq_4",
+   "x": -1.37,
+   "y": 2.42
+  },
+  {
+   "name": "door_lvgliq_5",
+   "x": -0.04,
+   "y": 0.62
+  },
+  {
+   "name": "door_lvgliq_6",
+   "x": -3.78,
+   "y": 0.57
+  },
+  {
+   "name": "door_ohagsq_0",
+   "x": -11.36,
+   "y": -3.0
+  },
+  {
+   "name": "door_ohagsq_1",
+   "x": -6.0,
+   "y": -3.0
+  }
+ ]
+}
